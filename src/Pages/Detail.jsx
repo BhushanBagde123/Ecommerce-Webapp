@@ -6,16 +6,27 @@ const Detail = () => {
     const [product,setProdut]=useState([])
 
     const {id} =useParams()
-    const {productData}=useContext(ContexPrv)
+    const {productData,setCart,cart}=useContext(ContexPrv)
     
     useEffect(()=>{
     const data= productData.filter((pro)=>pro.id == id)
      setProdut([...data])
     },[productData,id])
-    console.log(product)
     
     
-
+    
+ const addToCart =()=>{
+   const currentProduct =product[0]
+    if(cart.some((pro)=>pro.id ===currentProduct.id)){
+        alert("already added")
+        return
+    }
+   
+    setCart(pre=>[...pre,currentProduct])
+    // console.log(currentProduct)
+ }
+//  console.log("cart:"+cart)
+ 
  
   return (
     <div>
@@ -31,7 +42,7 @@ const Detail = () => {
                     </div>
                 </div>
                 <div className='flex gap-5 w-full h-full justify-center'>
-                <button>add to cart</button>
+                <button onClick={addToCart}>add to cart</button>
                 <button>buy now</button>
                 </div>
               

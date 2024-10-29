@@ -2,7 +2,8 @@ import React, {  createContext, useEffect, useState } from 'react'
 
 const ContexPrv = createContext()
 const Context = ({children}) => {
-    const [productData,setProductData]=useState([])
+    const [productData,setProductData]=useState([]);
+    const [cart,setCart] =useState([])
 
     const products= async()=>{
         const response =await fetch('https://fakestoreapi.com/products')
@@ -20,7 +21,7 @@ const Context = ({children}) => {
   
 
 
-return <ContexPrv.Provider value={{name,productData}}>
+return <ContexPrv.Provider value={{name,productData,cart,setCart}}>
     {children}
 </ContexPrv.Provider>
 }

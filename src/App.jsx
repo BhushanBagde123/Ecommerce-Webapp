@@ -4,6 +4,7 @@ import HomePage from './Pages/HomePage'
 import Layout from './Layout/Layout'
 import Detail from './Pages/Detail'
 import { Context } from './Context/Context'
+import CartPage from './Pages/CartPage'
 
 const route =createBrowserRouter([
    {
@@ -16,6 +17,10 @@ const route =createBrowserRouter([
          {path:'/detail/:id',
          element:<Detail/>,
 
+         },
+         {
+            path:'/cart',
+            element:<CartPage/>,
          }
       ]
    },
