@@ -8,7 +8,7 @@ const Nav = () => {
                 <li>men</li>
                 <li>women</li>
                 <li>kid</li>
-                <li>beuty</li>
+                <li>beauty</li>
                 <li>grocery</li>
             </ul>
 
