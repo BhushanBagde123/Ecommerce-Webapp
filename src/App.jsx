@@ -2,6 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import Layout from './Layout/Layout'
+import Detail from './Pages/Detail'
 import { Context } from './Context/Context'
 
 const route =createBrowserRouter([
@@ -12,6 +13,10 @@ const route =createBrowserRouter([
          {path:'/',
          element:<HomePage/>
          },
+         {path:'/detail/:id',
+         element:<Detail/>,
+
+         }
       ]
    },
  
