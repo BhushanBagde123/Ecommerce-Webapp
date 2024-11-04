@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ContexPrv } from '../Context/Context'
-import { Link, useParams } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const Wishlist = () => {
   const {like} =useContext(ContexPrv);
