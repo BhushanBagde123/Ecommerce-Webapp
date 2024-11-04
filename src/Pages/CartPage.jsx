@@ -2,18 +2,15 @@ import React, { useContext, useState } from 'react';
 import { ContexPrv } from '../Context/Context';
 
 const CartPage = () => {
-    const { cart, setCart } = useContext(ContexPrv);
+    const {removeCart,cart,setCart} = useContext(ContexPrv);
     
-    const removeCart = (id) => {
-        const updatedCart = cart.filter((item) => item.id !== id);
-        setCart(updatedCart);
-    };
+    
 
     const addAmount = (id) => {
         const updatedCart = cart.map((item) => {
             if (item.id === id) {
                
-                return { ...item, amount: (item.amount || 0) + 1 }; // Default to 0 if undefined, then add 1
+                return { ...item, amount: (item.amount || 1) + 1 }; // Default to 0 if undefined, then add 1
             }
             return item;
         });

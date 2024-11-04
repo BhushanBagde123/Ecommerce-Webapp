@@ -8,7 +8,7 @@ const Detail = () => {
    
 
     const {id} =useParams()
-    const {productData,setCart,cart,like, isWishlisted,addToLike,removeFromWishlist,}=useContext(ContexPrv);
+    const {productData, isWishlisted,addToLike,removeFromWishlist,addToCart}=useContext(ContexPrv);
 
    
     
@@ -19,17 +19,7 @@ const Detail = () => {
     
     
 const currentProduct =product[0];
- const addToCart =()=>{
-   
-    if(cart.some((pro)=>pro.id ===currentProduct.id)){
-       
-        alert("already added");
-        return
-    }
-   
-    setCart(pre=>[...pre,currentProduct]);
-    // console.log(currentProduct)
- }
+ 
 //  console.log("cart:"+cart)
  
  const toggelWishlist =()=>{
@@ -41,7 +31,7 @@ const currentProduct =product[0];
         addToLike(currentProduct)
     }
  }
- console.log(like)
+
  
   return (
     <div>
@@ -59,7 +49,7 @@ const currentProduct =product[0];
                 <FaHeart onClick={toggelWishlist} className={`cursor-pointer `}  color={isWishlisted(currentProduct.id)? "red" : "gray"} size={34}  />
                 
                 <div className='flex gap-5 w-full h-full justify-center'>
-                <button onClick={addToCart}>add to cart</button>
+                <button onClick={()=>addToCart(currentProduct)}>add to cart</button>
                 <button>buy now</button>
                 </div>
               
