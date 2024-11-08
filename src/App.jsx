@@ -6,6 +6,7 @@ import Detail from './Pages/Detail'
 import { Context } from './Context/Context'
 import CartPage from './Pages/CartPage'
 import Wishlist from './Pages/Wishlist'
+import CategoryPage from './Pages/CategoryPage'
 
 const route =createBrowserRouter([
    {
@@ -19,15 +20,20 @@ const route =createBrowserRouter([
          element:<Detail/>,
 
          },
-         {
-            path:'/cart',
-            element:<CartPage/>,
-         },
+         
          {
             path:'/wishlist',
             element:<Wishlist/>,
+         },
+         {
+            path:'/category/:categoryName',
+            element:<CategoryPage/>, 
          }
       ]
+   },
+   {
+      path:'/cart',
+      element:<CartPage/>,
    },
  
 

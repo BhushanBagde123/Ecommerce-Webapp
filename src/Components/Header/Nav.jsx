@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { CiHeart } from "react-icons/ci";
 import { ContexPrv } from '../../Context/Context';
 import Search from '../Search';
+import { BsCart4 } from "react-icons/bs";
+import { CiSearch } from "react-icons/ci";
 
 const Nav = () => {
  const {like,productData}=useContext(ContexPrv)
@@ -20,9 +22,11 @@ const Nav = () => {
  }
 
   return (
-    <div className='w-full h-20 bg-pink-700 flex justify-between px-4 top-0 sticky'>
+    <div className='w-full h-16 bg-white flex justify-between items-center px-4 top-0 sticky  shadow-lg'>
+      <span>logo</span>
         <div>
-            <ul className='flex gap-3 capitalize'>
+          
+            <ul className='flex gap-7 capitalize font-bold'>
                 <li>men</li>
                 <li>women</li>
                 <li>kid</li>
@@ -32,16 +36,19 @@ const Nav = () => {
 
         </div>
         <div>
-          <input className='w-72' type="search" value={input} onChange={searchProduct} placeholder='search product,brand and more' />
+          <div className='flex justify-center h-10 items-center bg-gray-300 rounded-md px-1'>
+          <CiSearch size={20} />
+          <input className='w-96 h-8 p-3 rounded-md bg-gray-300 outline-none' type="search" value={input} onChange={searchProduct} placeholder='search product,brand and more' />
+          </div>
           <Search searchItem={searchItem} input={input}/>
         </div>
         <div className='flex flex-row gap-4'>
          
           <Link to={'/wishlist'}>
-          <span><CiHeart /> {like.length}</span></Link>
+          <span><CiHeart size={20} /> {like.length}</span></Link>
           
           <Link to={'/cart'}>
-          <span>cart</span>
+          <BsCart4 size={20} />
           <Cart/>
           </Link>
         </div>

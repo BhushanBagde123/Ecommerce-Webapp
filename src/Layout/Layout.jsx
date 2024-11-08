@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../Components/Header/Nav'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
-import Footer from '../Components/Footer.jsx/Footer'
+import Footer from '../Components/Footer/Footer'
 
 const Layout = () => {
   return (

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ContexPrv } from '../Context/Context'
 import { FaHeart } from "react-icons/fa6";
+import AddToCartButton from '../Components/Buttons/AddToCartButton';
+import { BuyButton } from '../Components/Buttons/BuyButton';
 const Detail = () => {
     const [product,setProdut]=useState([]);;
     
@@ -42,15 +44,16 @@ const currentProduct =product[0];
                     <img className='w-96 h-96' src={item.image} alt="" />
                     <div className='flex flex-col gap-3 justify-center '>
                         <h1>{item.title}</h1>
-                        <span>{item.price}</span>
+                        <span>{item.price}$</span>
+                        <span>{item.rating.rate}</span>
                         <p>{item.description}</p>
                     </div>
                 </div>
                 <FaHeart onClick={toggelWishlist} className={`cursor-pointer `}  color={isWishlisted(currentProduct.id)? "red" : "gray"} size={34}  />
                 
                 <div className='flex gap-5 w-full h-full justify-center'>
-                <button onClick={()=>addToCart(currentProduct)}>add to cart</button>
-                <button>buy now</button>
+                <AddToCartButton addToCart={addToCart} currentProduct={currentProduct}/>
+                <BuyButton/>
                 </div>
               
                 </div>

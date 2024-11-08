@@ -26,13 +26,13 @@ const Search = ({searchItem,input}) => {
    
  
   return (
-    !hide && (<div className={`bg-white z-20`}>
+    !hide && (<div className={`bg-white z-20 w-96 h-80 rounded-md absolute top-14`}>
         
         {searchItem.slice(0,9).map((item)=>{
             return (
                 <div key={item.id}>
                     
-                   <p onClick={()=>navigationHide(item.id)} className='cursor-pointer'>{item.title}</p>
+                   <p onClick={()=>navigationHide(item.id)} className='cursor-pointer text-sm p-1'>{item.title}</p>
                 </div>
 
                

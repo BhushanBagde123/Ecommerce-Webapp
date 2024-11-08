@@ -1,11 +1,16 @@
 import React,{useContext} from 'react'
 import { ContexPrv } from '../Context/Context'
 import { Link } from 'react-router-dom';
+import Category from '../Components/Header/Category';
+import Slider from '../Components/Header/Slider'
 
 const HomePage = () => {
    const {productData} = useContext(ContexPrv);
    
   return (
+    <div className='w-full h-full'>
+    <Category/>
+    <Slider/>
     <div className='w-full h-full grid grid-cols-4 gap-4 p-3'> 
     {productData.map((product,index)=>(
       <div key={product.id} className='w-full h-36 flex-col gap-2 cursor-pointer flex justify-center items-center '>
@@ -16,6 +21,7 @@ const HomePage = () => {
 
       </div>
     ))}
+    </div>
     </div>
   )
 }
