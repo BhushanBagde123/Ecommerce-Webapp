@@ -37,7 +37,7 @@ const Context = ({children}) => {
   
   const addToLike = (product) => {
     if (!like.some((item) => item.id === product.id)) {
-      setLike((prevLike) => [...prevLike, product]);
+      setLike((prevLike) => [ product,...prevLike]);
     }
   };
 

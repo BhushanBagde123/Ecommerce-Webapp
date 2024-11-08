@@ -6,6 +6,7 @@ import { ContexPrv } from '../../Context/Context';
 import Search from '../Search';
 import { BsCart4 } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
+import { IoIosPerson } from "react-icons/io";
 
 const Nav = () => {
  const {like,productData}=useContext(ContexPrv)
@@ -23,7 +24,7 @@ const Nav = () => {
 
   return (
     <div className='w-full h-16 bg-white flex justify-between items-center px-4 top-0 sticky  shadow-lg'>
-      <span>logo</span>
+     <Link to={'/'}><span>logo</span></Link> 
         <div>
           
             <ul className='flex gap-7 capitalize font-bold'>
@@ -43,7 +44,7 @@ const Nav = () => {
           <Search searchItem={searchItem} input={input}/>
         </div>
         <div className='flex flex-row gap-4'>
-         
+          <IoIosPerson size={20}/>
           <Link to={'/wishlist'}>
           <span><CiHeart size={20} /> {like.length}</span></Link>
           

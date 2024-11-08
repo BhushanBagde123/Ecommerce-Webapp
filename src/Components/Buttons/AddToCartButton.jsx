@@ -1,8 +1,16 @@
 import React from 'react'
 
-const AddToCartButton = ({addToCart,currentProduct}) => {
+const AddToCartButton = ({addToCart,moveToCart}) => {
+  const handelChecking =()=>{
+    if(addToCart){
+      addToCart()
+    }
+    if(moveToCart){
+      moveToCart()
+    }
+  }
   return (
-    <button onClick={()=>addToCart(currentProduct)}>add to cart</button>
+    <button className='capitalize' onClick={handelChecking}>add to cart</button>
   )
 }
 
