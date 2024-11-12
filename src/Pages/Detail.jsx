@@ -49,7 +49,7 @@ const currentProduct =product[0];
                         <p>{item.description}</p>
                     </div>
                 </div>
-                <FaHeart onClick={toggelWishlist} className={`cursor-pointer `}  color={isWishlisted(currentProduct.id)? "red" : "gray"} size={34}  />
+                <FaHeart onClick={toggelWishlist} className={`cursor-pointer `}  color={isWishlisted(currentProduct.id)? "red" : "grey"} size={34}  />
                 
                 <div className='flex gap-5 w-full h-full justify-center'>
                 <AddToCartButton addToCart={()=>{addToCart(item)}} currentProduct={currentProduct}/>
