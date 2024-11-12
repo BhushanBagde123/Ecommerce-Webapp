@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { ContexPrv } from '../Context/Context'
 
 const CategoryPage = () => {
-  const {categoryName} =useParams()
+  const [productCategory,setProductCategory]=useState([]);
+  const {categoryName} =useParams();
+  const {productData} =useContext(ContexPrv);
+
+  useEffect(()=>{
+    if(categoryName === "fasion"){
+      const  data= productData.filter(((item)=>item.category === "men's clothing" || item.category=== "women's clothing"))
+         setProductCategory(data)
+     
+       }
+    if(categoryName === "electronic"){
+      const eData =productData.filter((item)=>item.category ==="electronics")
+      setProductCategory(eData)
+
+    }
+  },[productData])
+ 
   
   return (
-    <div>CategoryPage</div>
+    <div>
+    <div className='w-full h-24 capitalize mt-4 p-3'><span className='font-bold'>{categoryName}</span>-{productCategory.length} items</div>
+    <div className='w-full min-h-screen flex'>
+     
+      <div className='w-[30%] min-h-screen p-3 border'>
+        <h2 className='font-bold uppercase'>filters</h2>
+      </div>
+      <div className='w-[70%] min-h-screen border p-3'>
+        <h1>name</h1>
+        <div className='w-full min-h-screen grid grid-cols-3 gap-2 p-2'>
+        {productCategory.map((item)=>(
+          <div key={item.id} className='w-52 h-52'>
+            <img className='w-44 h-44' src={item.image} alt="" />
+          </div>
+        ))}
+        </div>
+      </div>
+    </div>
+    </div>
   )
 }
 

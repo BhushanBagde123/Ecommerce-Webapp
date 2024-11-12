@@ -23,7 +23,7 @@ const Nav = () => {
  }
 
   return (
-    <div className='w-full h-16 bg-white flex justify-between items-center px-4 top-0 sticky  shadow-lg'>
+    <nav className='w-full h-16 bg-white flex justify-between  z-20 items-center px-4 top-0 sticky  shadow-lg'>
      <Link to={'/'}><span>logo</span></Link> 
         <div>
           
@@ -53,7 +53,7 @@ const Nav = () => {
           <Cart/>
           </Link>
         </div>
-    </div>
+    </nav>
   )
 }
 
