@@ -9,7 +9,7 @@ import { CiSearch } from "react-icons/ci";
 import { IoIosPerson } from "react-icons/io";
 
 const Nav = () => {
- const {like,productData}=useContext(ContexPrv)
+ const {like,productData,cart}=useContext(ContexPrv)
  const [input,setInput]=useState("");
  const [searchItem,setSearchItem] =useState([])
 
@@ -43,14 +43,17 @@ const Nav = () => {
           </div>
           <Search searchItem={searchItem} input={input}/>
         </div>
-        <div className='flex flex-row gap-4'>
-          <IoIosPerson size={20}/>
-          <Link to={'/wishlist'}>
-          <span><CiHeart size={20} /> {like.length}</span></Link>
+        <div className='flex flex-row gap-6 justify-center items-center px-2'>
+         <Link to={'/user'}><IoIosPerson size={20}/></Link> 
+          <Link to={'/wishlist'} className='flex relative'>
+          <span className='text-sm absolute left-4 top-[-10px] w-5 flex justify-center bg-red-600 rounded-full'>{like.length} </span>
+          <CiHeart size={20} />
+          </Link>
           
-          <Link to={'/cart'}>
+          <Link to={'/cart'} className='flex relative'>
+          <span className='text-sm absolute left-4 top-[-10px] w-5 flex justify-center bg-red-600 rounded-full'>{cart.length}</span>
           <BsCart4 size={20} />
-          <Cart/>
+        
           </Link>
         </div>
     </nav>

@@ -10,7 +10,7 @@ const Context = ({children}) => {
         const response =await fetch('https://fakestoreapi.com/products')
         const data =await response.json()
         setProductData(data);
-        console.log(data)
+       
        
     }
 

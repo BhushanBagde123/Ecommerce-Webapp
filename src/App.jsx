@@ -7,6 +7,7 @@ import { Context } from './Context/Context'
 import CartPage from './Pages/CartPage'
 import Wishlist from './Pages/Wishlist'
 import CategoryPage from './Pages/CategoryPage'
+import User from './Pages/User'
 
 const route =createBrowserRouter([
    {
@@ -28,6 +29,10 @@ const route =createBrowserRouter([
          {
             path:'/category/:categoryName',
             element:<CategoryPage/>, 
+         },
+         {
+            path:'/user',
+            element:<User/>
          }
       ]
    },
