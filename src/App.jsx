@@ -8,6 +8,7 @@ import CartPage from './Pages/CartPage'
 import Wishlist from './Pages/Wishlist'
 import CategoryPage from './Pages/CategoryPage'
 import User from './Pages/User'
+import AddProduct from './Pages/AddProduct'
 
 const route =createBrowserRouter([
    {
@@ -40,6 +41,10 @@ const route =createBrowserRouter([
       path:'/cart',
       element:<CartPage/>,
    },
+   {
+      path:'/addproduct',
+      element:<AddProduct/>
+   }
  
 
 ])
