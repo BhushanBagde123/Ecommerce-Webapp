@@ -43,10 +43,10 @@ const currentProduct =product[0];
                 <div className='flex w-full h-full gap-3 p-4'>
                     <img className='w-96 h-96' src={item.image} alt="" />
                     <div className='flex flex-col gap-3 justify-center '>
-                        <h1>{item.title}</h1>
-                        <span>{item.price}$</span>
+                        <h1>{item.productname}</h1>
+                        <span>{item.price} Rs</span>
                         <span>{item.rating.rate}</span>
-                        <p>{item.description}</p>
+                        <p>{item.detail}</p>
                     </div>
                 </div>
                 <FaHeart onClick={toggelWishlist} className={`cursor-pointer `}  color={isWishlisted(currentProduct.id)? "red" : "grey"} size={34}  />

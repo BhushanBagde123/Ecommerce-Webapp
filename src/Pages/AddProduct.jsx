@@ -1,17 +1,17 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { fireDb } from '../FirebaseConfigur/Firebase';
 import React, { useState } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 const AddProduct = () => {
   const [category,setCategory] =useState("");
   const [subCategory,setSubCategory] =useState("");
   const [gender,setGender] =useState("");
   const [productname,setProductName] =useState("");
-  const [price,setPrice] =useState("");
-  const [discount,setDiscount] =useState("");
+  const [price,setPrice] =useState(0);
+  const [discount,setDiscount] =useState(0);
   const [image,setImage] =useState("");
   const [detail,setDetail]=useState("");
-  const [stock,setStock]=useState("");
+  const [stock,setStock]=useState(0);
   const [kids,setKids] =useState(false);
   const [brand, setBrand] = useState("");
   const [batterySize, setBatterySize] = useState("");
@@ -29,7 +29,7 @@ const AddProduct = () => {
     setBatterySize("");
   }
   const handelKids =(e)=>{
-      setKids(e.target.value)
+      setKids( Boolean(e.target.value))
 
   }
   const handelSubcategory =(e)=>{
@@ -44,6 +44,7 @@ const AddProduct = () => {
   const productSubmit =async(e)=>{
       e.preventDefault();
       const productInfo = {
+          id:uuidv4(),
           category,
           subCategory,
           ...(category === 'fasion' && { gender, kids,type }),
@@ -55,6 +56,10 @@ const AddProduct = () => {
           image,
           detail,
           stock,
+          rating:[{
+            rate:2,
+            comment:"good product",
+          }]
       };
      
       try {
@@ -145,7 +150,6 @@ return (
                   { subCategory ==="footware"&& (
                   <div>
                       <select name="type" id="type"  onChange={ handelType} >
-                      Casual Shoes
                       <option value="">select type</option>
                       <option value="shoes"> Shoes</option>
                       <option value="heels">heels</option>
@@ -174,14 +178,88 @@ return (
               </div>
               </>
           )}
+          {category ==="beauty"&& (
+            <>
+            <div>
+            <select name="subcategory" id="subcategory" onChange={handelSubcategory}>
+                      <option value="">select subcategory</option>
+                      <option value="makeup">makeup</option>
+                      <option value="Skincare,Bath & Body">Skincare,Bath & Body</option>
+                      <option value="Haircare">Haircare</option>
+                      <option value="Fragrances">Fragrances</option>
+            </select>
+            { subCategory ==="makeup"&& (
+                  <div>
+                      <select name="type" id="type"  onChange={ handelType} >
+                     
+                      <option value="">select type</option>
+                      <option value="Lipstick">Lipstick</option>
+                      <option value="Lip Gloss">Lip Gloss</option>
+                      <option value="Lip Liner">Lip Liner</option>
+                      <option value="Mascara">Mascara</option>
+                      <option value="Eyeliner">Eyeliner</option>
+                  </select>
+                      </div>
+                  )}
+            { subCategory === "Skincare,Bath & Body" &&(
+                <div>
+                    <select name="type" id="type">
+                      <option value="">select type</option>
+                      <option value="Face Moisturiser">Face Moisturiser</option>
+                      <option value="Cleanser">Cleanser</option>
+                      <option value="Masks & Peel">Masks & Peel</option>
+                      <option value="Sunscreen">Sunscreen</option>
+                      <option value="Face Wash">Face Wash</option>
+                      <option value="Body Lotion">Body Lotion</option>
+                    </select>
+                </div>
+            )
+
+            }
+             { subCategory === "Haircare" &&(
+                <div>
+                    <select name="type" id="type">
+                      <option value="">select type</option>
+                      <option value="Shampoo">Shampoo</option>
+                      <option value="Conditioner">Conditioner</option>
+                      <option value="Hair Cream">Hair Cream</option>
+                      <option value="Hair Oil">Hair Oil</option>
+                      <option value="Hair Gel">Hair Gel</option>
+                      <option value="Hair Serum">Hair Serum</option>
+                    </select>
+                </div>
+            )
+
+            }
+            { subCategory === "Fragrances" &&(
+                <div>
+                    <select name="type" id="type">
+                      <option value="">select type</option>
+                      <option value="Perfume">Perfume</option>
+                      <option value="Deodorant">Deodorant</option>
+                      <option value="Body Mist">Body Mist</option>
+                      
+                    </select>
+                </div>
+            )
+
+            }
+                  <input type="text" placeholder='brand'  onChange={(e)=>setBrand(e.target.value)} />
+
+            </div>
+            </>
+          )
+
+          }
+
       </div>
      
       <input type="text" placeholder='productname' value={productname} onChange={(e)=>setProductName(e.target.value)}/>
-      <input type="number" placeholder='price' value={price} onChange={(e)=>setPrice(e.target.value)}/>
-      <input type="number" placeholder='discout price' value={discount} onChange={(e)=>setDiscount(e.target.value)} />
+      <input type="number" placeholder='price' value={price} onChange={(e)=>setPrice(Number(e.target.value))}/>
+      <input type="number" placeholder='discout price' value={discount} onChange={(e)=>setDiscount(Number(e.target.value))} />
       <input type="url" placeholder='image url' value={image} onChange={(e)=>setImage(e.target.value)} />
       <input type="text" placeholder='detail' value={detail} onChange={(e)=>setDetail(e.target.value)} />
-      <input type="number" placeholder='stocks' value={stock} onChange={(e)=>setStock(e.target.value)} />
+      <input type="number" placeholder='stocks' value={stock} onChange={(e)=>setStock(Number(e.target.value))} />
 
       <button>submit</button>
       </form>

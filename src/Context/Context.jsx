@@ -1,4 +1,6 @@
+import { collection, onSnapshot, query, QuerySnapshot } from 'firebase/firestore';
 import React, {  createContext, useEffect, useState } from 'react'
+import { fireDb } from '../FirebaseConfigur/Firebase';
 
 const ContexPrv = createContext()
 const Context = ({children}) => {
@@ -7,10 +9,27 @@ const Context = ({children}) => {
     const [like,setLike]=useState([])
 
     const products= async()=>{
-        const response =await fetch('https://fakestoreapi.com/products')
-        const data =await response.json()
-        setProductData(data);
-       
+        // const response =await fetch('https://fakestoreapi.com/products')
+        // const data =await response.json()
+        // setProductData(data);
+       try{
+        const q=query(
+          collection(fireDb,"products"),
+        );
+        const data =onSnapshot(q,(QuerySnapshot)=>{
+          let productArray =[];
+          QuerySnapshot.forEach((doc)=>{
+            productArray.push(doc.data());
+          })
+          setProductData(productArray);
+          console.log(productData)
+        });
+        return ()=>data;
+
+       }
+       catch(err){
+        console.log(err.message)
+       }
        
     }
 

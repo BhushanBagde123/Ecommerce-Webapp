@@ -32,7 +32,7 @@ const Search = ({searchItem,input}) => {
             return (
                 <div key={item.id}>
                     
-                   <p onClick={()=>navigationHide(item.id)} className='cursor-pointer text-sm p-1'>{item.title}</p>
+                   <p onClick={()=>navigationHide(item.id)} className='cursor-pointer text-sm p-1'>{item.productname}</p>
                 </div>
 
                

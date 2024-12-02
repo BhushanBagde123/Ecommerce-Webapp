@@ -10,13 +10,18 @@ const CategoryPage = () => {
 
   useEffect(()=>{
     if(categoryName === "fasion"){
-      const  data= productData.filter(((item)=>item.category === "men's clothing" || item.category=== "women's clothing"))
+      const  data= productData.filter(((item)=>item.category === "fasion"))
          setProductCategory(data)
      
        }
     if(categoryName === "electronic"){
-      const eData =productData.filter((item)=>item.category ==="electronics")
+      const eData =productData.filter((item)=>item.category ==="electronic")
       setProductCategory(eData)
+
+    }
+    if(categoryName === "toys"){
+      const toyData =productData.filter((item)=>item.category ==="toy")
+      setProductCategory(toyData)
 
     }
   },[productData])
@@ -51,8 +56,8 @@ const CategoryPage = () => {
         {productCategory.map((item)=>(
           <div key={item.id} className='w-52 h-72 border flex flex-col gap-3 p-3'>
             <div className='cursor-pointer'><FaHeart  onClick={()=>toggelWishlist(item.id)} color={isWishlisted(item.id)? "red" : "grey"}  /></div>
-          <Link to={`/detail/${item.id}`}><img className='w-44 h-44' src={item.image} alt="" /></Link>  
-            <h2>{item.title.substring(0,20)}...</h2>
+          <Link to={`/detail/${item.id}`}><img className='w-48 h-48' src={item.image} alt="" /></Link>  
+            <h2>{item.productname.substring(0,20)}...</h2>
           </div>
         ))}
         </div>

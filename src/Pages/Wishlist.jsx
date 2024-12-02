@@ -26,7 +26,7 @@ const Wishlist = () => {
             </div>
             </Link>
             <div className='flex flex-col'>
-                <h3>{item.title.substring(0,16)+"..."}</h3>
+                <h3>{item.detail.substring(0,16)+"..."}</h3>
                 <h4>{item.price}$</h4>           
                  </div>
                  <div className='bg-pink-600 w-full h-10 flex items-center justify-center'>

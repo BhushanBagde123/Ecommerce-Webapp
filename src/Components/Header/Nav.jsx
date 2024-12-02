@@ -16,7 +16,7 @@ const Nav = () => {
  const searchProduct=(e)=>{
   const value =e.target.value;
   setInput(value);
-  const search = productData.filter((item)=>item.title.toLowerCase().includes(input.toLowerCase()))
+  const search = productData.filter((item)=>item.productname.toLowerCase().includes(input.toLowerCase()))
   setSearchItem(search)
 
 
