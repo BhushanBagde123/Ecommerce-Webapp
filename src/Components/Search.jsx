@@ -26,7 +26,7 @@ const Search = ({searchItem,input}) => {
    
  
   return (
-    !hide && (<div className={`bg-white z-20 w-96 h-80 rounded-md absolute top-14`}>
+    !hide && (<div className={`bg-white z-20 w-96 h-96 rounded-md absolute top-14`}>
         
         {searchItem.slice(0,9).map((item)=>{
             return (
