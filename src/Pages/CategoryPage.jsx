@@ -21,6 +21,8 @@ const CategoryPage = () => {
     } else if (categoryName === 'toys') {
       categoryData = productData.filter((item) => item.category === 'toy');
     }
+    else if (categoryName === 'mobile') {
+      categoryData = productData.filter((item) => item.subCategory === 'mobile');}
 
     setProductCategory(categoryData);
     setFilteredProducts(categoryData);
@@ -99,7 +101,7 @@ const CategoryPage = () => {
                   </div>
                 ))}
               </div>
-
+             { categoryName !== 'grocery' && categoryName !== 'electronic' && categoryName !== 'mobile' && (
               <div className='filter-section'>
                 <span className='capitalize'>Gender</span>
                 <div>
@@ -123,7 +125,7 @@ const CategoryPage = () => {
                   Female
                 </div>
               </div>
-
+             )}
               <button
                 className='mt-4 px-3 py-2 bg-gray-200 border rounded'
                 onClick={resetFilters}

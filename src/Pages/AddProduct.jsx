@@ -16,6 +16,7 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [batterySize, setBatterySize] = useState("");
   const [type,setType] =useState("");
+  const [ram,setRam]=useState("");
  
 
   const handelChange =(e)=>{
@@ -175,6 +176,7 @@ return (
                   </select>
                   <input type="text" placeholder='battery size'  onChange={(e)=>setBatterySize(e.target.value)} />
                   <input type="text" placeholder='brand'  onChange={(e)=>setBrand(e.target.value)} />
+                  <input type="text" placeholder='ram' onChange={(e)=>setRam(e.target.value)} />
               </div>
               </>
           )}
